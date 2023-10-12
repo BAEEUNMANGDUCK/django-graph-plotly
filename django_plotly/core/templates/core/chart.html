@@ -1,0 +1,52 @@
+{% extends "core/base.html" %}
+
+{% block content  %}
+
+    <div id="chart-container">
+        {{ chart|safe }}
+        <img src= {{ img_src }} />
+    </div>
+
+
+    <form action={% url 'chart' %} method="GET" id="search_city">
+        <select name="search_city" id="search_city">
+            <option value="">도시 선택</option>
+            <option value="seoul">서울</option>
+            <option value="busan">부산</option>
+            <option value="daegu">대구</option>
+            <option value="incheon">인천</option>
+            <option value="gwangju">광주</option>
+            <option value="daejeon">대전</option>
+            <option value="ulsan">울산</option>
+            <option value="sejong">세종</option>
+            <option value="gyeonggi">경기</option>
+            <option value="gangwon">강원</option>
+            <option value="chungbuk">충북</option>
+            <option value="chungnam">충남</option>
+            <option value="jeonbuk">전북</option>
+            <option value="jeonnam">전남</option>
+            <option value="gyeongbuk">경북</option>
+            <option value="gyeongnam">경남</option>
+            <option value="jeju">제주</option>
+        </select> 
+    </form> 
+
+    {{ chart2|safe }}
+
+
+    {{ chart3|safe }}
+
+    {{ map|safe }}
+
+    
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("select[name=search_city]").change(function(){
+            $("#search_city").submit();
+            });
+        });
+    </script>
+
+        
+{% endblock content  %}

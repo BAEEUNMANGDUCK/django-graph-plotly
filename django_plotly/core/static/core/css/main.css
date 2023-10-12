@@ -1,0 +1,10 @@
+#chart-container{
+    display: flex;
+}
+
+
+img {
+    width: 700px;
+    height: 500px;
+    text-align: center;
+}

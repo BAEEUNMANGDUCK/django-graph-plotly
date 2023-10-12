@@ -34,9 +34,9 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">About</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experience</a></li>
-                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">Education</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">미세먼지 보고서</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">미세먼지 농도</a></li>
+                    <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#education">측정망(소) 위치</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#interests">Interests</a></li>
                     <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#awards">Awards</a></li>
@@ -126,10 +126,11 @@
             <!-- Education-->
             <section class="resume-section" id="education">
                 <div class="resume-section-content">
-                    <h2 class="mb-5">측정소 위치(국가배경, 도시대기)</h2>
+                    <h2 class="mb-5">측정망(소) 위치(국가배경, 도시대기)</h2>
                      <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                        {% comment %} <div class="d-flex flex-column flex-md-row justify-content-between"> {% endcomment %}
                         <div class="flex-grow-1">
-                            <h3 class="mb-0">국가배경 농도 측정망</h3>
+                            <h3 class="mb-0">국가배경 농도 측정망(소)</h3>
                             <br>
                             <div class="subheading mb-3">국가의 배경농도를 파악하고 외국으로의 오염물질 유입, 유출상태 등을 파악</div>
                             <br>
@@ -140,26 +141,28 @@
                         <div class="flex-shrink-0"><span class="text-primary">11개 (7개 시·군)</span></div>
                     </div>
                     <br>
+                    <br>
                     <div class="d-flex flex-column flex-md-row justify-content-between">
                         <div class="flex-grow-1">
-                            <h3 class="mb-0">도시대기 측정망</h3>
+                            <h3 class="mb-0">도시대기 측정망(소)</h3>
                             <br>
                             <div class="subheading mb-3">도심(거주)지역의 평균대기질 농도 측정</div>
                             <br>
                             <div>측정항목: SO2, CO, NO2, O3, PM-10, PM-2.5 등</div>
                             <br>
                             {{ map2 | safe }}
-                            <br>
-
-                            <div>지도 누락 측정소 테이블(28개)</div>
+                        </div>
+                    </div>
+                    <br>
+                    <hr>
+                    <div class="d-flex flex-column flex-md-row justify-content-between">
+                        <div class="flex-grow-1">
+                            <h5 class="mb-0">지도 누락 측정망(소) 테이블(28개)</h5>
                             <br>
                             {{ nurak | safe }}
-                            
                         </div>
-                        <div class="flex-shrink-0"><span class="text-primary">533개 (누락데이터 포함 총 161개 시·군)</span></div>
+                    <div class="flex-shrink-0"><span class="text-primary">533개 (누락데이터 포함 총 161개 시·군)</span></div>
                     </div>
-                    
-                    
                 </div>
             </section>
             <hr class="m-0" />

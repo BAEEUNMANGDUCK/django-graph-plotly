@@ -223,7 +223,16 @@ def use_template(request):
     
     chart2 = fig2.to_html()
     
+    ####### 미세먼지 성분 파이 차트 #######
     
+    
+    labels = ['황산염, 질염 등', '탄소류와 검댕', '광물', '기타']
+    values = [58.3, 16.8, 6.3, 18.6]
+    
+    pie_chart = go.Figure(data=[go.Pie(labels=labels, values=values)])
+    
+    pie_chart = pie_chart.to_html()
+    #####################################
     
      ## 지도에 표시하기 국가 배경, 도시대기###
     
@@ -287,6 +296,7 @@ def use_template(request):
                'map1': m._repr_html_(),
                'map2': m2._repr_html_(),
                'nurak': nurak_table,
+               'pie_chart': pie_chart
                }
     
     return render(request, "core/index.html", context=context)
@@ -295,7 +305,7 @@ def use_template(request):
 
 
 def update_chart(request):
-    print("here is updatechart")
+    
     year = CITY_FINEDUST.objects.values_list('date', flat=True)
     city = CITY_FINEDUST.objects.values_list('seoul', flat=True)
     search_city = request.GET.get('search_city')

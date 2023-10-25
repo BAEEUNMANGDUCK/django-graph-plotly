@@ -150,7 +150,7 @@ def use_template(request):
     fig = px.line(
         x= [f.date for f in finedust],
         y= [f.weighted_average for f in finedust],
-        labels={"x": "연도", "y": "미세먼지 농도(가중평균)"}
+        labels={"x": "연도", "y": "가중평균 미세먼지 농도(㎍/㎡)"}
     )
     
     fig.update_layout(width=1100)
@@ -188,7 +188,7 @@ def use_template(request):
     
     fig2 = px.bar(x=city_x,
                  y=city_y,
-                 labels={"x": "연도", "y": "미세먼지 농도"}
+                 labels={"x": "연도", "y": "미세먼지 농도(㎍/㎡)"}
                  )
     
     city_dict = {"seoul": "서울",
@@ -357,7 +357,7 @@ def update_chart(request):
     
     fig2 = px.bar(x=city_x,
                  y=city_y,
-                 labels={"x": "연도", "y": "미세먼지 농도"}
+                 labels={"x": "연도", "y": "미세먼지 농도(㎍/㎡)"}
                  )
     
     city_dict = {"seoul": "서울",

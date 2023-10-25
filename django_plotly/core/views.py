@@ -239,7 +239,7 @@ def use_template(request):
     stations = STATION_LOCATION.objects.all()
     
     # create a Folium map 
-    m = folium.Map(location=[36, 127], zoom_start=6, zoom_control=False)
+    m = folium.Map(location=[36, 127], zoom_start=6, zoom_control=False, width=800, height=500)
     
     with open(f"{settings.BASE_DIR / 'data' / 'skorea-provinces-2018-geo.json'}", "r", encoding="cp949") as gfile:
         jsondata = json.load(gfile)
@@ -255,7 +255,7 @@ def use_template(request):
     # FastMarkerCluster(data=list(zip(latitudes, longitudes)), name=[station.station_name for station in stations]).add_to(m)
     
     stations_city = STATION_LOCATION2.objects.all()
-    m2 = folium.Map(location=[36, 127], zoom_start=6, zoom_control=False)
+    m2 = folium.Map(location=[36, 127], zoom_start=6, zoom_control=False,  width=800, height=500)
     
     with open(f"{settings.BASE_DIR / 'data' / 'skorea-provinces-2018-geo.json'}", "r", encoding="cp949") as gfile:
         jsondata = json.load(gfile)
@@ -288,6 +288,43 @@ def use_template(request):
     
     
     ######################################################
+    # 미세먼지 관련 뉴스 연도별 추이(2015~2022)
+    
+    ### 테이블 ###
+    num_news = NUM_NEWS.objects.all()
+    
+    num_news_table = go.Figure(data=[go.Table(
+        columnorder=[1, 2],
+        columnwidth=[300, 700],
+        header=dict(values=['연도별', "뉴스기사 개수"],
+                    align='left'),
+                    cells=dict(values=[[news.date for news in num_news], [news.num_news for news in num_news]], align='left')
+                                    )])
+    
+  
+    
+    num_news_table.update_layout(
+                       width=800,
+                       margin=dict.fromkeys(list('ltrb'), 0)
+                       )
+    
+    num_news_table = num_news_table.to_html()
+    
+    ##### 선 그래프 #####
+    
+    num_news_line = px.line(
+        x=[news.date for news in num_news],
+        y=[news.num_news for news in num_news],
+        labels={"x": "연도", "y":"뉴스기사 개수"}
+    )
+    
+    num_news_line.update_layout(
+                        width=800,
+                        margin=dict.fromkeys(list('ltrb'), 0)
+    )
+    
+    num_news_line = num_news_line.to_html()
+    
     
     
     
@@ -296,7 +333,9 @@ def use_template(request):
                'map1': m._repr_html_(),
                'map2': m2._repr_html_(),
                'nurak': nurak_table,
-               'pie_chart': pie_chart
+               'pie_chart': pie_chart,
+               'num_news_table': num_news_table,
+               'num_news_line': num_news_line
                }
     
     return render(request, "core/index.html", context=context)

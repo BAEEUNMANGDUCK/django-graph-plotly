@@ -4,7 +4,7 @@ import plotly.graph_objects as go
 import folium
 from core.models import FINEDUST, CITY_FINEDUST, NUM_NEWS, STATION_LOCATION, STATION_LOCATION2,NURAK
 from core.forms import DateForm
-from folium.plugins import FastMarkerCluster
+from folium.plugins import FastMarkerCluster,MarkerCluster
 from django.conf import settings
 import json
 from bs4 import BeautifulSoup
@@ -261,10 +261,16 @@ def use_template(request):
         jsondata = json.load(gfile)
         folium.GeoJson(jsondata, name="대한민국 경계").add_to(m2)
         
-    latitudes = [station.latitude for station in stations_city]
-    longitudes = [station.longitude for station in stations_city]
+  
     
-    FastMarkerCluster(data=list(zip(latitudes, longitudes))).add_to(m2)
+    marker_cluster = MarkerCluster().add_to(m2)
+
+    for station in stations_city:
+        lat, lon = station.latitude, station.longitude
+        label = station.station_name
+
+        marker = folium.Marker([lat,lon], popup=label)
+        marker.add_to(marker_cluster)
     
     # 누락 장소 테이블 
     

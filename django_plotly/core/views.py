@@ -226,7 +226,7 @@ def use_template(request):
     ####### 미세먼지 성분 파이 차트 #######
     
     
-    labels = ['황산염, 질염 등', '탄소류와 검댕', '광물', '기타']
+    labels = ['황산염, 질산염 등', '탄소류와 검댕', '광물', '기타']
     values = [58.3, 16.8, 6.3, 18.6]
     
     pie_chart = go.Figure(data=[go.Pie(labels=labels, values=values)])

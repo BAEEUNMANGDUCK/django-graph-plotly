@@ -281,14 +281,17 @@ def use_template(request):
     nurak_table = go.Figure(data=[go.Table(
         columnorder=[1, 2],
         columnwidth=[300, 700],
-        header=dict(values=['측정소', "위치"],
-                    align='left'),
+        header=dict(values=['<b>측정소</b>', "<b>위치</b>"],
+                    align='center',
+                    fill_color='#bd5d38',  # 헤더 배경색
+                    font=dict(color='white')),
         cells=dict(values=[[nurak.name for nurak in nuraks], [nurak.addr for nurak in nuraks]],
-                   align='left'))
+                   align=['center', 'left']))
     ])
     
     nurak_table.update_layout(
-                       margin=dict.fromkeys(list('ltrb'), 0)
+                       margin=dict.fromkeys(list('ltrb'), 0),
+                       width=800
                        )
     
     nurak_table = nurak_table.to_html()

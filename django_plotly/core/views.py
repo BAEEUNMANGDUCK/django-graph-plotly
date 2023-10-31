@@ -152,7 +152,8 @@ def use_template(request):
         y= [f.weighted_average for f in finedust],
         labels={"x": "연도", "y": "가중평균 미세먼지 농도(㎍/㎡)"}
     )
-    
+
+    fig.update_traces(line_color='#bd5d38')
     fig.update_layout(width=1100)
     
     fig.update_layout(title_text=f"전국인구 가중평균 미세먼지 농도 (2015~2022)")
@@ -190,7 +191,7 @@ def use_template(request):
                  y=city_y,
                  labels={"x": "연도", "y": "미세먼지 농도(㎍/㎡)"}
                  )
-    
+    fig2.update_traces(marker_color='#bd5d38')
     city_dict = {"seoul": "서울",
                  "busan": "부산",
                  "daegu": "대구",
@@ -323,7 +324,7 @@ def use_template(request):
         y=[news.num_news for news in num_news],
         labels={"x": "연도", "y":"뉴스기사 개수"}
     )
-    
+    num_news_line.update_traces(line_color='#bd5d38')
     num_news_line.update_layout(
                         width=800,
                         margin=dict.fromkeys(list('ltrb'), 0)
@@ -365,7 +366,7 @@ def update_chart(request):
                  y=city_y,
                  labels={"x": "연도", "y": "미세먼지 농도(㎍/㎡)"}
                  )
-    
+    fig2.update_traces(marker_color='#bd5d38')
     city_dict = {"seoul": "서울",
                  "busan": "부산",
                  "daegu": "대구",

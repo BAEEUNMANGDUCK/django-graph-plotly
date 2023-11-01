@@ -215,7 +215,7 @@ def use_template(request):
         fig2.update_layout(title_text=f"도시별 미세먼지 농도 (서울) (2015~2022)")
     else:   
         fig2.update_layout(title_text=f"도시별 미세먼지 농도 ({city_dict[search_city]}) (2015~2022)")
-    
+    fig2.update_yaxes(range=[0, 30])
     fig2.update_layout(title={
         'font_size': 22,
         'xanchor': 'center',
@@ -394,7 +394,7 @@ def update_chart(request):
     else:
         print('hello')
         fig2.update_layout(title_text=f"도시별 미세먼지 농도 ({city_dict[search_city]}) (2015~2022)")
-    
+    fig2.update_yaxes(range=[0, 30])
     fig2.update_layout(title={
         'font_size': 22,
         'xanchor': 'center',

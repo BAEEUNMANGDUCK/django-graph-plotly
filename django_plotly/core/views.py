@@ -367,7 +367,7 @@ def update_chart(request):
     
     fig2 = px.bar(x=city_x,
                  y=city_y,
-                 labels={"x": "연도", "y": "미세먼지 농도(㎍/㎡)"}
+                 labels={"x": "<b>연도</b>", "y": "<b>미세먼지 농도(㎍/㎡)</b>"}
                  )
     fig2.update_traces(marker_color='#bd5d38')
     city_dict = {"seoul": "서울",

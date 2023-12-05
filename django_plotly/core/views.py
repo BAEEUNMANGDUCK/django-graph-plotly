@@ -19,7 +19,7 @@ def chart(request):
     fig = px.line(
         x= [f.date for f in finedust],
         y= [f.weighted_average for f in finedust],
-        title="전국인구 가중평균 미세먼지 농도 (2015~2022)",
+        title="<b>전국인구 가중평균 미세먼지 농도 (2015~2022)</b>",
         labels={"x": "연도", "y": "미세먼지 농도(전국 가중평균)"}
     )
     
@@ -156,7 +156,7 @@ def use_template(request):
     fig.update_traces(line_color='#bd5d38')
     fig.update_layout(width=1100)
     
-    fig.update_layout(title_text=f"전국인구 가중평균 미세먼지 농도 (2015~2022)")
+    fig.update_layout(title_text=f"<b>전국인구 가중평균 미세먼지 농도 (2015~2022)</b>")
     
     
     fig.update_layout(title={
